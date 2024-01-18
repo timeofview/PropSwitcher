@@ -1,30 +1,31 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
     <id>com.timeofview.PropSwitcher</id>
-
-    <!-- Public plugin name should be written in Title Case.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>PropSwitcher</name>
 
-    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
-
-    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
-         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
-         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <vendor email="vladyslav.tymofieiev@gmail.com"></vendor>
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
-  ]]></description>
+  PropSwitcher is an IntelliJ IDEA plugin designed to streamline the process of working with property files.
+   It enables developers to quickly switch between different '.properties' files within a project.
+   After invoking a keyboard shortcut,
+    it presents a dialog window where users can select a folder and view all the '.properties' files contained in it.
+     Choosing a file from this list will automatically update the 'application-dev.properties' file, making it a handy tool for managing project configurations.
+]]></description>
 
-    <!-- Product and plugin compatibility requirements.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+
     <depends>com.intellij.modules.platform</depends>
-
-    <!-- Extension points defined by the plugin.
-         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.timeofview.propswitcher.PropSwitcherSettings"/>
 
     </extensions>
+    <actions>
+        <action id="PropSwitcherAction" class="com.timeofview.propswitcher.PropSwitcherAction" text="Open PropSwitcher"
+                description="Opens the PropSwitcher dialog.">
+            <!-- Definisci la scorciatoia da tastiera qui, se necessario -->
+            <keyboard-shortcut first-keystroke="ctrl shift P" keymap="$default"/>
+        </action>
+    </actions>
+
+
+
+
 </idea-plugin>
